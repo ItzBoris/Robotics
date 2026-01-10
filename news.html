@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Robotics Club NIT Patna</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .news-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            /* Scroll animation uses the global transition. Hover effect uses specific transition below. */
+        }
+
+        .news-card:hover {
+            transform: translateX(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .news-date {
+            color: var(--accent-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .read-more {
+            color: var(--accent-purple);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container">
+
+        <header class="hero">
+            <h1>Latest News</h1>
+            <p>Updates, announcements, and stories from the club.</p>
+        </header>
+
+        <div class="news-container">
+            <!-- News Item 1 -->
+            <article class="glass-panel news-card">
+                <div class="news-meta">
+                    <span class="news-date">Jan 05, 2026</span>
+                    <span>•</span>
+                    <span>Announcements</span>
+                </div>
+                <h3>Registrations Open for RoboWar 2026</h3>
+                <p style="color: var(--text-muted); line-height: 1.6;">
+                    The wait is over! Registrations for the biggest robotics combat event of East India are now open.
+                    Teams from over 50 colleges are expected to participate.
+                </p>
+                <a href="#" class="read-more">Read Full Story <i class="ph ph-arrow-right"></i></a>
+            </article>
+
+            <!-- News Item 2 -->
+            <article class="glass-panel news-card">
+                <div class="news-meta">
+                    <span class="news-date">Dec 20, 2025</span>
+                    <span>•</span>
+                    <span>Achievements</span>
+                </div>
+                <h3>Victory at IIT Bombay Techfest</h3>
+                <p style="color: var(--text-muted); line-height: 1.6;">
+                    Our team "CyberKnights" secured the 1st runner-up position in the Drone Racing League at Techfest
+                    2025.
+                    Kudos to the team for their relentless effort.
+                </p>
+                <a href="#" class="read-more">Read Full Story <i class="ph ph-arrow-right"></i></a>
+            </article>
+
+            <!-- News Item 3 -->
+            <article class="glass-panel news-card">
+                <div class="news-meta">
+                    <span class="news-date">Nov 15, 2025</span>
+                    <span>•</span>
+                    <span>Workshops</span>
+                </div>
+                <h3>Winter Workshop Series Concluded</h3>
+                <p style="color: var(--text-muted); line-height: 1.6;">
+                    Over 200 freshers participated in our week-long winter workshop covering Arduino, 3D Printing, and
+                    Basic Circuitry.
+                </p>
+                <a href="#" class="read-more">Read Full Story <i class="ph ph-arrow-right"></i></a>
+            </article>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Robotics Club NIT Patna. Designed for the Future.</p>
+        </footer>
+
+    </div>
+
+    <!-- Dock -->
+    <div class="dock-container">
+        <nav class="dock">
+            <a href="index.html" class="dock-item"><i class="ph ph-house"></i><span class="dock-tooltip">Home</span></a>
+            <a href="about.html" class="dock-item"><i class="ph ph-info"></i><span class="dock-tooltip">About</span></a>
+            <a href="projects.html" class="dock-item"><i class="ph ph-code"></i><span
+                    class="dock-tooltip">Projects</span></a>
+            <a href="events.html" class="dock-item"><i class="ph ph-calendar-check"></i><span
+                    class="dock-tooltip">Events</span></a>
+            <a href="team.html" class="dock-item"><i class="ph ph-users"></i><span class="dock-tooltip">Team</span></a>
+            <a href="news.html" class="dock-item active"><i class="ph ph-newspaper"></i><span
+                    class="dock-tooltip">News</span></a>
+            <a href="achievements.html" class="dock-item"><i class="ph ph-medal"></i><span
+                    class="dock-tooltip">Wins</span></a>
+            <a href="contact.html" class="dock-item"><i class="ph ph-envelope"></i><span
+                    class="dock-tooltip">Contact</span></a>
+            <a href="login.html" class="dock-item">
+                <i class="ph ph-lock-key"></i>
+                <span class="dock-tooltip">Admin</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js?v=5.5"></script>
+</body>
+
+</html>

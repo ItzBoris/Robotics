@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Robotics Club NIT Patna</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .login-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            min-height: 1.2em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="login-container">
+        <form class="glass-panel login-card" id="loginForm">
+            <i class="ph ph-lock-key login-icon"></i>
+            <h2 style="margin-bottom: 0.5rem;">Welcome Back</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Enter credentials to access admin panel.</p>
+
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-input" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" id="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+
+            <div class="error-message" id="loginError">Invalid credentials. Please try again.</div>
+
+            <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Back to Website</a>
+        </form>
+    </div>
+
+    <script src="script.js?v=5.5"></script>
+    <script>
+        // Inline script to defer to main script.js logic if preferred, 
+        // OR we can just add the specific event listener here calling a function from script.js 
+        // to keep logic central. 
+        // For now, I'll put the specific binding here because script.js is global.
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+
+            // Call the login function defined in script.js (validation logic)
+            // or just do it here since it's simple.
+            // Requirement said "on that login page... it will take us to admin panel".
+
+            if (u === 'admin' && p === 'admin') {
+                // Success
+                localStorage.setItem('isAdmin', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                // Failure
+                const err = document.getElementById('loginError');
+                err.style.opacity = '1';
+                document.getElementById('password').value = '';
+
+                // Shake animation
+                const card = document.querySelector('.login-card');
+                card.style.transform = 'translateX(10px)';
+                setTimeout(() => { card.style.transform = 'translateX(-10px)'; }, 100);
+                setTimeout(() => { card.style.transform = 'translateX(10px)'; }, 200);
+                setTimeout(() => { card.style.transform = 'translateX(0)'; }, 300);
+            }
+        });
+    </script>
+</body>
+
+</html>
