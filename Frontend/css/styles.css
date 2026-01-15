@@ -17,6 +17,28 @@
     box-sizing: border-box;
 }
 
+/* 1. The Scrollbar Track */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 2. The Background of the bar */
+::-webkit-scrollbar-track {
+    background: #0b0f19;
+}
+
+/* 3. The Moving Handle (Thumb) */
+::-webkit-scrollbar-thumb {
+    background: #2a3b55;
+    border-radius: 5px;
+}
+
+/* 4. Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+    background: #3fa9f5;
+}
+
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
@@ -263,6 +285,12 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    justify-content: center;
+}
+
+.highlights-grid .card {
+    padding-top: 1.5rem;
+
 }
 
 /* Enforce strict image dimensions */
@@ -283,22 +311,32 @@ a {
 }
 
 .card {
-    padding: 2.5rem;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    align-items: flex-start;
-    position: relative;
+    width: fit-content;
+    height: 350px;
+    min-width: 350px;
+    min-height: 350px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 20px;
     overflow: hidden;
-    padding-top: 0;
-    height: 100%;
-    /* Make card fill grid cell */
-    min-height: 450px;
-    /* Ensure minimum height */
-    cursor: pointer;
-    /* Interaction indicator for JS handler */
 }
 
-/* ... existing styles ... */
+.card-icon {
+    font-size: 3rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1.5rem;
+}
+
+.card h3 {
+    margin-bottom: 1.5rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
 
 .card-link {
     color: var(--accent-cyan);

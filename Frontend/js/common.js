@@ -1,5 +1,6 @@
 // --- RANDOM CODE BACKGROUND v2 ---
-console.log("Robotics Club Script Loaded - Version: 5.1 (CSS Blur Optimization)");
+console.log("Robotics Club Common Script Loaded");
+
 const canvas = document.getElementById('bg-canvas');
 let ctx;
 if (canvas) {
@@ -47,7 +48,7 @@ const codeSnippets = [
     "if (detectCollision()) { stop(); }",
 ];
 
-// Mouse tracking (kept for potential future use or generic tracking)
+// Mouse tracking
 const mouseParams = { x: null, y: null, radius: 125 };
 
 
@@ -93,9 +94,6 @@ function draw() {
     ctx.font = fontSize + 'px "Courier New", monospace';
     ctx.textBaseline = 'top';
 
-    // --- PASS 1: BLURRED BACKGROUND (Main Canvas) ---
-    // CSS Blur handles the blur now. We just draw sharp text here.
-
     for (let i = 0; i < codeLines.length; i++) {
         const line = codeLines[i];
         ctx.fillStyle = `rgba(148, 163, 184, 0.2)`;
@@ -113,10 +111,8 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Window Events
+// Window Events for Canvas
 window.addEventListener('resize', init);
-
-// Mouse Events
 window.addEventListener('mousemove', (e) => {
     mouseParams.x = e.clientX;
     mouseParams.y = e.clientY;
@@ -126,63 +122,15 @@ window.addEventListener('mouseout', () => {
     mouseParams.y = null;
 });
 
-// Initialize
-// Initialize
+// Initialize Canvas
 if (canvas) {
     init();
     animate();
 }
 
-// --- TYPING ANIMATION ---
-class TypeWriter {
-    constructor(element, text, loop = true) {
-        this.element = element;
-        this.fullText = text;
-        this.loop = loop;
-        this.currentText = text;
-        this.isDeleting = true; // Start by deleting existing text
-        this.speed = 50;
-        this.delay = 2000; // Wait before typing/deleting
-
-        this.tick();
-    }
-
-    tick() {
-        let typeSpeed = this.speed;
-
-        if (this.isDeleting) {
-            this.currentText = this.fullText.substring(0, this.currentText.length - 1);
-            typeSpeed /= 2; // Delete faster
-        } else {
-            this.currentText = this.fullText.substring(0, this.currentText.length + 1);
-        }
-
-        this.element.textContent = this.currentText;
-
-        if (!this.isDeleting && this.currentText === this.fullText) {
-            // Finished typing
-            typeSpeed = this.delay;
-            this.isDeleting = true;
-        } else if (this.isDeleting && this.currentText === '') {
-            // Finished deleting
-            this.isDeleting = false;
-            typeSpeed = 500; // Pause before typing
-        }
-
-        setTimeout(() => this.tick(), typeSpeed);
-    }
-}
-
-// Simple Interaction Script
-const initInteraction = () => {
-    // Start Typing Animation
-    const typeEl = document.getElementById('typing-text');
-    if (typeEl && !typeEl.dataset.typed) { // Prevent double init
-        typeEl.dataset.typed = "true";
-        new TypeWriter(typeEl, "Join the Robotics Club of NIT Patna. We build, code, and innovate the machines of tomorrow.");
-    }
-
-    // Add 'active' class handling
+// --- SHARED UI INTERACTIONS ---
+const initCommonInteractions = () => {
+    // Add 'active' class handling for Dock
     const items = document.querySelectorAll('.dock-item');
     items.forEach(item => {
         item.addEventListener('click', function () {
@@ -210,12 +158,10 @@ const initInteraction = () => {
     const scrollElements = document.querySelectorAll('.glass-panel');
     scrollElements.forEach(el => scrollObserver.observe(el));
     console.log(`Initialized Scroll Observer on ${scrollElements.length} elements.`);
-
-
 };
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initInteraction);
+    document.addEventListener('DOMContentLoaded', initCommonInteractions);
 } else {
-    initInteraction();
+    initCommonInteractions();
 }
