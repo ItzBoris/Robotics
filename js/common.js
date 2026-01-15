@@ -149,9 +149,10 @@ const initCommonInteractions = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-visible');
-            } else {
-                entry.target.classList.remove('fade-in-visible');
+                // Optional: Stop observing once visible to save resources
+                // scrollObserver.unobserve(entry.target); 
             }
+            // Removed the else block so elements don't fade out when scrolling up
         });
     }, observerOptions);
 
