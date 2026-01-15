@@ -21,3 +21,18 @@
     margin-bottom: 1rem;
     color: var(--text-muted);
 }
+
+/* Specific spacing overrides for Events Page */
+.hero {
+    height: 60vh;
+    min-height: 400px;
+}
+
+.hero p {
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}

@@ -210,6 +210,20 @@ const initInteraction = () => {
     const scrollElements = document.querySelectorAll('.glass-panel');
     scrollElements.forEach(el => scrollObserver.observe(el));
     console.log(`Initialized Scroll Observer on ${scrollElements.length} elements.`);
+
+    // --- CARD CLICK HANDLER (Robust Fix) ---
+    const clickableCards = document.querySelectorAll('.card');
+    clickableCards.forEach(card => {
+        const link = card.querySelector('.card-link');
+        if (link) {
+            card.addEventListener('click', (e) => {
+                // Prevent infinite loop if clicking the link itself
+                if (e.target !== link && !link.contains(e.target)) {
+                    link.click();
+                }
+            });
+        }
+    });
 };
 
 if (document.readyState === 'loading') {
